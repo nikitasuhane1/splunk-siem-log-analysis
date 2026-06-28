@@ -275,4 +275,10 @@ HTTP server errors are typically treated as infrastructure issues, not security 
 **7. Connecting findings across queries tells a richer story**  
 No single query told the full picture. The attack narrative only emerged by combining: source IP volume → URI patterns → user-agent filtering → response size anomalies → error counts. This cross-query correlation is the core skill of SIEM analysis — individual queries are data points; the analyst's job is connecting them into a coherent incident timeline.
 
+---
+
+## Author
+
+**Nikita Suhane**
+
 *Tools: Splunk Enterprise 10.2.2*
