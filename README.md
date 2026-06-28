@@ -198,10 +198,6 @@ Four high-risk URIs were repeatedly accessed outside of normal homepage traffic:
 
 ## Screenshots
 
-## Screenshots
-
-## Screenshots
-
 ### 1. Top 10 Source IPs — `top` Command
 ![Top 10 Source IPs using top command](screenshots/01-top-ips-top-command.png)
 *10.0.0.28 highest-volume source IP (76 requests) across 3,000 events*
