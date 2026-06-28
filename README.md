@@ -198,17 +198,61 @@ Four high-risk URIs were repeatedly accessed outside of normal homepage traffic:
 
 ## Screenshots
 
-| Screenshot | Query | What It Shows |
-|---|---|---|
-| `01-top-ips-top-command.png` | `top limit=10 id.orig_h` | Top 10 source IPs using top command |
-| `02-top-ips-stats-table.png` | `stats count by id.orig_h` | Top 10 source IPs using stats — table view |
-| `03-top-ips-barchart.png` | `stats count by id.orig_h` | Bar chart visualisation of top source IPs |
-| `04-top-ips-sourcetype-json.png` | `sourcetype=json stats count` | Same query with sourcetype filter applied |
-| `05-top-uris-table.png` | `stats count by uri head 5` | Top 5 URIs including sensitive paths |
-| `06-top-uris-barchart.png` | `stats count by uri head 5` | URI distribution bar chart |
-| `07-large-responses.png` | `resp_body_len > 500000` | 323 events with oversized response bodies |
-| `08-server-errors.png` | `status_code>=500` | 285 server-side errors counted |
-| `09-malicious-useragents.png` | `user_agent NOT Mozilla` | sqlmap, botnet-checker, curl, python-requests |
+## Screenshots
+
+## Screenshots
+
+### 1. Top 10 Source IPs — `top` Command
+![Top 10 Source IPs using top command](screenshots/01-top-ips-top-command.png)
+*10.0.0.28 highest-volume source IP (76 requests) across 3,000 events*
+
+---
+
+### 2. Top 10 Source IPs — `stats` Command
+![Top 10 Source IPs using stats command](screenshots/02-top-ips-stats-table.png)
+*Same result using `stats + sort + head` — preferred approach for chaining further SPL commands*
+
+---
+
+### 3. Top 10 Source IPs — Bar Chart
+![Top 10 Source IPs bar chart](screenshots/03-top-ips-barchart.png)
+*Even distribution (65–76 requests/IP) consistent with distributed scanning behaviour*
+
+---
+
+### 4. Top 10 Source IPs — `sourcetype=json` Filter
+![Top 10 Source IPs sourcetype filter](screenshots/04-top-ips-sourcetype-json.png)
+*Sourcetype filter added — best practice to improve query performance*
+
+---
+
+### 5. Sensitive URI Enumeration — Table
+![Top 5 URIs table](screenshots/05-top-uris-table.png)
+*/etc/passwd (35), /shell.php (25), /config.php (25), /admin (38) — active path traversal and webshell access attempts detected*
+
+---
+
+### 6. Sensitive URI Enumeration — Bar Chart
+![Top 5 URIs bar chart](screenshots/06-top-uris-barchart.png)
+*Malicious URIs blend into high-volume /index.html traffic (2,830 requests)*
+
+---
+
+### 7. Large Response Bodies — Potential Data Staging
+![Large response bodies](screenshots/07-large-responses-table.png)
+*323 responses exceeding 500KB — responses up to ~1.97MB flagged as anomalous*
+
+---
+
+### 8. Server-Side Errors — 285 5xx Errors Detected
+![Server errors count](screenshots/08-server-errors-count.png)
+*285 5xx errors correlate with SQLmap payloads causing application crashes*
+
+---
+
+### 9. Malicious User-Agents Identified
+![Malicious user agents](screenshots/09-malicious-useragents-chart.png)
+*sqlmap/1.5.1, botnet-checker/1.0, python-requests, curl — 296 non-browser requests confirmed. High-confidence IOC*
 
 ---
 
