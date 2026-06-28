@@ -14,7 +14,6 @@
 - [MITRE ATT&CK Mapping](#mitre-attck-mapping)
 - [Screenshots](#screenshots)
 - [Key Learnings](#key-learnings)
-- [How to Replicate](#how-to-replicate)
 
 ---
 
